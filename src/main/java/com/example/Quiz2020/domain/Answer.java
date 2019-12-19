@@ -8,9 +8,13 @@ import javax.validation.constraints.NotNull;
 public class Answer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name="QUESTION_ID", unique = true)
+    @Column(name="ANSWER_ID", unique = true)
+    private int answerId;
+
+    @NotNull
+    @Column(name="QUESTION_ID")
     private int questionId;
 
     @NotNull
@@ -44,9 +48,18 @@ public class Answer {
         isCorrect = correct;
     }
 
-    public Answer(int questionId, String answerInfo, Boolean isCorrect) {
+    public Answer(@NotNull int answerId, int questionId, String answerInfo, Boolean isCorrect) {
+        this.answerId = answerId;
         this.questionId = questionId;
         this.answerInfo = answerInfo;
         this.isCorrect = isCorrect;
+    }
+
+    public int getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(int answerId) {
+        this.answerId = answerId;
     }
 }

@@ -1,17 +1,29 @@
 package com.example.Quiz2020.domain;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "QUESTIONS")
 public class Question {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
+    @Column(name="QUESTION_ID", unique = true)
     private int id;
+
+    @NotNull
+    @Column(name="QUESTION")
     private String question;
-    private List<Answer> answerList = new ArrayList<>();
+
+
 
     public Question(int id, String question, List<Answer> answerList) {
         this.id = id;
         this.question = question;
-        this.answerList = answerList;
     }
 
     public int getId() {
@@ -30,11 +42,5 @@ public class Question {
         this.question = question;
     }
 
-    public List<Answer> getAnswerList() {
-        return answerList;
-    }
 
-    public void setAnswerList(List<Answer> answerList) {
-        this.answerList = answerList;
-    }
 }
