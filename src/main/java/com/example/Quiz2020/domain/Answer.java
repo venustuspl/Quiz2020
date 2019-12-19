@@ -1,8 +1,23 @@
 package com.example.Quiz2020.domain;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "ANSWERS")
 public class Answer {
+
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name="QUESTION_ID", unique = true)
     private int questionId;
+
+    @NotNull
+    @Column(name="ANSWER_INFO")
     private String answerInfo;
+
+    @Column(name="IS_CORRECT")
     private Boolean isCorrect;
 
     public int getQuestionId() {
