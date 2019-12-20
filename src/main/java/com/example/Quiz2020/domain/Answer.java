@@ -11,11 +11,11 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name="ANSWER_ID", unique = true)
-    private int answerId;
+    private long answerId;
 
     @NotNull
     @Column(name="QUESTION_ID")
-    private int questionId;
+    private long questionId;
 
     @NotNull
     @Column(name="ANSWER_INFO")
@@ -24,11 +24,11 @@ public class Answer {
     @Column(name="IS_CORRECT")
     private Boolean isCorrect;
 
-    public int getQuestionId() {
+    public long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(long questionId) {
         this.questionId = questionId;
     }
 
@@ -48,18 +48,28 @@ public class Answer {
         isCorrect = correct;
     }
 
-    public Answer(@NotNull int answerId, int questionId, String answerInfo, Boolean isCorrect) {
+    public Answer(@NotNull long answerId, long questionId, String answerInfo, Boolean isCorrect) {
         this.answerId = answerId;
         this.questionId = questionId;
         this.answerInfo = answerInfo;
         this.isCorrect = isCorrect;
     }
 
-    public int getAnswerId() {
+    public Answer(long questionId, String answerInfo, Boolean isCorrect) {
+
+        this.questionId = questionId;
+        this.answerInfo = answerInfo;
+        this.isCorrect = isCorrect;
+    }
+
+    public Answer() {
+    }
+
+    public long getAnswerId() {
         return answerId;
     }
 
-    public void setAnswerId(int answerId) {
+    public void setAnswerId(long answerId) {
         this.answerId = answerId;
     }
 }
