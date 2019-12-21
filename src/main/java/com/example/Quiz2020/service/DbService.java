@@ -1,5 +1,6 @@
 package com.example.Quiz2020.service;
 
+import com.example.Quiz2020.domain.Question;
 import com.example.Quiz2020.repository.*;
 import com.example.Quiz2020.domain.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ public class DbService {
     @Autowired
     private AnswerRepository repository;
 
+    @Autowired
+    private QuestionRepository questionRepository;
 
     public List<Answer> getAllAnswers() {
 
         return repository.findAll();
     }
-
-    //pobieranie zadania przy użyciu id
 
     public Optional<Answer> getAnswer(Long id) {
 
@@ -32,8 +33,27 @@ public class DbService {
         return repository.save(answer);
     }
 
-    public void deleteAnswer(Long id){
+    public void deleteAnswer(Long id) {
         repository.deleteById(id);
+    }
+
+
+    public List<Question> getAllQuestions() {
+
+        return questionRepository.findAll();
+    }
+
+    public Optional<Question> getQuestion(Long id) {
+
+        return questionRepository.findById(id);
+    }
+
+    public Question saveQuestion(final Question question) {
+        return questionRepository.save(question);
+    }
+
+    public void deleteQuestion(Long id) {
+        questionRepository.deleteById(id);
     }
 
 }
