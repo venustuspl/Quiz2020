@@ -27,7 +27,7 @@ public class QuestionMapper {
 
         }
 
-        public List<QuestionDto> mapToTaskDtoList(final List<Question> questionList){
+        public List<QuestionDto> mapToQuestionDtoList(final List<Question> questionList){
             return questionList.stream()
                     .map(q -> new QuestionDto(q.getId(), q.getQuestion() ))
                     .collect(Collectors.toList());
