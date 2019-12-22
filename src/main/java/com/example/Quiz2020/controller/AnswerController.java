@@ -28,9 +28,16 @@ public class AnswerController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/answers/{answerId}")
-    public AnswerDto getTask(@RequestParam Long answerId) throws Exception{
+    public AnswerDto getAnswer(@RequestParam Long answerId) throws Exception{
 
         return answerMapper.mapToAnswerDto(service.getAnswer(answerId).orElseThrow(Exception::new));
+
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/allquestionanswers/{questionId}")
+    public List<AnswerDto> getAllQuestionAnswers(@RequestParam int questionId) {
+
+        return answerMapper.mapToAnswerDtoList(service.getAllQuestionAnswers(questionId));
 
     }
 

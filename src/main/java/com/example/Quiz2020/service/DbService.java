@@ -24,6 +24,10 @@ public class DbService {
         return repository.findAll();
     }
 
+    public List<Answer> getAllQuestionAnswers(int id){
+        return repository.retriveAllQuestionAnswers(id);
+    }
+
     public Optional<Answer> getAnswer(Long id) {
 
         return repository.findById(id);

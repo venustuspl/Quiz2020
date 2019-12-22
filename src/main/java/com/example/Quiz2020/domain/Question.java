@@ -12,7 +12,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name="QUESTION_ID", unique = true)
+    @Column(name="ID", unique = true)
     private long id;
 
     @NotNull

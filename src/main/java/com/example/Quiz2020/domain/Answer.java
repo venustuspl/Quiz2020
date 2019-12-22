@@ -3,6 +3,13 @@ package com.example.Quiz2020.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+
+@NamedNativeQuery(
+        name = "Answer.retriveAllQuestionAnswers",
+        query = "SELECT * FROM ANSWERS WHERE QUESTION_ID = :ID ",
+        resultClass = Answer.class
+)
+
 @Entity
 @Table(name = "ANSWERS")
 public class Answer {
