@@ -27,15 +27,15 @@ public class AnswerController {
 
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/answers/{answerId}")
-    public AnswerDto getAnswer(@RequestParam Long answerId) throws Exception{
+    @RequestMapping(method = RequestMethod.GET, value = "/answer/{answerId}")
+    public AnswerDto getAnswer(@PathVariable Long answerId) throws Exception{
 
         return answerMapper.mapToAnswerDto(service.getAnswer(answerId).orElseThrow(Exception::new));
 
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/allquestionanswers/{questionId}")
-    public List<AnswerDto> getAllQuestionAnswers(@RequestParam int questionId) {
+    public List<AnswerDto> getAllQuestionAnswers(@PathVariable int questionId) {
 
         return answerMapper.mapToAnswerDtoList(service.getAllQuestionAnswers(questionId));
 
