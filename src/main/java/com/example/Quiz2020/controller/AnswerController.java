@@ -42,19 +42,19 @@ public class AnswerController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/answers/{answerId}")
-    public void deleteTask(@PathVariable Long answerId) {
+    public void deleteAnswer(@PathVariable Long answerId) {
         service.deleteAnswer(answerId);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/answers")
-    public AnswerDto updateTask(@RequestBody AnswerDto answerDto) {
+    public AnswerDto updateAnswer(@RequestBody AnswerDto answerDto) {
 
         return answerMapper.mapToAnswerDto(service.saveAnswer(answerMapper.mapToAnswer(answerDto)));
     }
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/answers",consumes = APPLICATION_JSON_VALUE)
-    public void createTask(@RequestBody AnswerDto answerDto) {
+    public void createAnswer(@RequestBody AnswerDto answerDto) {
 
         service.saveAnswer(answerMapper.mapToAnswer(answerDto));
     }

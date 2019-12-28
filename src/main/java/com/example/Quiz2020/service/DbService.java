@@ -1,6 +1,7 @@
 package com.example.Quiz2020.service;
 
 import com.example.Quiz2020.domain.Question;
+import com.example.Quiz2020.domain.Ranking;
 import com.example.Quiz2020.repository.*;
 import com.example.Quiz2020.domain.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,15 @@ public class DbService {
     @Autowired
     private QuestionRepository questionRepository;
 
+    @Autowired
+    private RankingRepository rankingRepository;
+
     public List<Answer> getAllAnswers() {
 
         return repository.findAll();
     }
 
-    public List<Answer> getAllQuestionAnswers(int id){
+    public List<Answer> getAllQuestionAnswers(int id) {
         return repository.retriveAllQuestionAnswers(id);
     }
 
@@ -59,5 +63,26 @@ public class DbService {
     public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
     }
+
+//Rankings
+
+    public List<Ranking> getAllRankings() {
+
+        return rankingRepository.findAll();
+    }
+
+    public Optional<Ranking> getRanking(Long id) {
+
+        return rankingRepository.findById(id);
+    }
+
+    public Ranking saveRanking(final Ranking ranking) {
+        return rankingRepository.save(ranking);
+    }
+
+    public void deleteRanking(Long id) {
+        rankingRepository.deleteById(id);
+    }
+
 
 }
