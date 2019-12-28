@@ -33,6 +33,10 @@ dependencies {
 
 	//actuator
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.2.RELEASE'
+
+	//mail
+	compile('org.springframework.boot:spring-boot-starter-mail:1.5.7.RELEASE')
+
 }
 
 test {
