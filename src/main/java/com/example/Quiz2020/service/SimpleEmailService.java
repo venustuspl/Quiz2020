@@ -50,7 +50,7 @@ public class SimpleEmailService {
         return result;
     }
 
-    private SimpleMailMessage createMailMessage(final Mail mail){
+    private SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());

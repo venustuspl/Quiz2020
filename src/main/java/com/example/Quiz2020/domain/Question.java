@@ -12,21 +12,18 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name="ID", unique = true)
+    @Column(name = "ID", unique = true)
     private long id;
 
     @NotNull
-    @Column(name="QUESTION")
+    @Column(name = "QUESTION")
     private String question;
-
 
 
     public Question(long id, String question) {
         this.id = id;
         this.question = question;
     }
-
-
 
 
     public long getId() {

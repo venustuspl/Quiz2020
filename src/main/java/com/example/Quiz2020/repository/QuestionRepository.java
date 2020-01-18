@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface QuestionRepository extends CrudRepository<Question , Long> {
+public interface QuestionRepository extends CrudRepository<Question, Long> {
 
     @Override
     public List<Question> findAll();
@@ -17,7 +17,7 @@ public interface QuestionRepository extends CrudRepository<Question , Long> {
     public Optional<Question> findById(Long id);
 
     @Override
-    Question save (Question answer);
+    Question save(Question answer);
 
     @Override
     public void deleteById(Long id);

@@ -1,7 +1,6 @@
 package com.example.Quiz2020.controller;
 
 
-
 import com.example.Quiz2020.domain.AnswerDto;
 import com.example.Quiz2020.mapper.AnswerMapper;
 import com.example.Quiz2020.service.DbService;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1")
@@ -23,12 +23,12 @@ public class AnswerController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/answers")
     public List<AnswerDto> getAnswers() {
-        return  answerMapper.mapToAnswerDtoList(service.getAllAnswers());
+        return answerMapper.mapToAnswerDtoList(service.getAllAnswers());
 
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/answer/{answerId}")
-    public AnswerDto getAnswer(@PathVariable Long answerId) throws Exception{
+    public AnswerDto getAnswer(@PathVariable Long answerId) throws Exception {
 
         return answerMapper.mapToAnswerDto(service.getAnswer(answerId).orElseThrow(Exception::new));
 
@@ -53,7 +53,7 @@ public class AnswerController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/answers",consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/answers", consumes = APPLICATION_JSON_VALUE)
     public void createAnswer(@RequestBody AnswerDto answerDto) {
 
         service.saveAnswer(answerMapper.mapToAnswer(answerDto));

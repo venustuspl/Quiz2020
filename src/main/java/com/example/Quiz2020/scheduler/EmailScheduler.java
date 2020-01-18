@@ -28,9 +28,9 @@ public class EmailScheduler {
         long size = rankingRepository.count();
         simpleEmailService.send(new Mail(
                 //"venustus.pl@gmail.com",
-                 adminConfig.getAdminMail(),
+                adminConfig.getAdminMail(),
                 SUBJECT,
-                "Currently in database you got: " + size +  (size > 1 ? " rankings." : " ranking.")
+                "Currently in database you got: " + size + (size > 1 ? " rankings." : " ranking.")
         ));
     }
 }

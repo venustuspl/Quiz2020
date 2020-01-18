@@ -18,7 +18,7 @@ public class Ranking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name="RANKING_ID", unique = true)
+    @Column(name = "RANKING_ID", unique = true)
     private long rankingId;
 
     @Column(name = "LOGIN")

@@ -11,26 +11,26 @@ import java.util.stream.Collectors;
 public class QuestionMapper {
 
 
-        public Question mapToQuestion(final QuestionDto questionDto){
-            return new Question(
-            questionDto.getId(),
-            questionDto.getQuestion());
+    public Question mapToQuestion(final QuestionDto questionDto) {
+        return new Question(
+                questionDto.getId(),
+                questionDto.getQuestion());
 
-        }
-
-
-        public QuestionDto mapToQuestionDto(final Question question){
-            return new QuestionDto(
-                    question.getId(),
-                    question.getQuestion()
-                    );
-
-        }
-
-        public List<QuestionDto> mapToQuestionDtoList(final List<Question> questionList){
-            return questionList.stream()
-                    .map(q -> new QuestionDto(q.getId(), q.getQuestion() ))
-                    .collect(Collectors.toList());
-        }
     }
+
+
+    public QuestionDto mapToQuestionDto(final Question question) {
+        return new QuestionDto(
+                question.getId(),
+                question.getQuestion()
+        );
+
+    }
+
+    public List<QuestionDto> mapToQuestionDtoList(final List<Question> questionList) {
+        return questionList.stream()
+                .map(q -> new QuestionDto(q.getId(), q.getQuestion()))
+                .collect(Collectors.toList());
+    }
+}
 

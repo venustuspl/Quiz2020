@@ -20,5 +20,4 @@ public class AdminConfig {
     private String companyName;
 
 
-
 }

@@ -9,23 +9,23 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository 
+@Repository
 public interface RankingRepository extends CrudRepository<Ranking, Long> {
 
-        @Override
-        public List<Ranking> findAll();
+    @Override
+    public List<Ranking> findAll();
 
-        @Override
-        public Optional<Ranking> findById(Long id);
+    @Override
+    public Optional<Ranking> findById(Long id);
 
-        @Override
-        Ranking save (Ranking Ranking);
+    @Override
+    Ranking save(Ranking Ranking);
 
-        @Override
-        public void deleteById(Long id);
+    @Override
+    public void deleteById(Long id);
 
-        @Override
-        long count();
+    @Override
+    long count();
 
 
 }

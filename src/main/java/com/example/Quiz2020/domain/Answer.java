@@ -17,18 +17,18 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name="ANSWER_ID", unique = true)
+    @Column(name = "ANSWER_ID", unique = true)
     private long answerId;
 
     @NotNull
-    @Column(name="QUESTION_ID")
+    @Column(name = "QUESTION_ID")
     private long questionId;
 
     @NotNull
-    @Column(name="ANSWER_INFO")
+    @Column(name = "ANSWER_INFO")
     private String answerInfo;
 
-    @Column(name="IS_CORRECT")
+    @Column(name = "IS_CORRECT")
     private Boolean isCorrect;
 
     public long getQuestionId() {

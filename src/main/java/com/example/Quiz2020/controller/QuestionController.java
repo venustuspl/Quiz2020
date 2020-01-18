@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1")
@@ -23,12 +24,12 @@ public class QuestionController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/questions")
     public List<QuestionDto> get() {
-        return  questionMapper.mapToQuestionDtoList(service.getAllQuestions());
+        return questionMapper.mapToQuestionDtoList(service.getAllQuestions());
 
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/question/{questionId}")
-    public QuestionDto getQuestion(@RequestParam Long questionId) throws Exception{
+    public QuestionDto getQuestion(@RequestParam Long questionId) throws Exception {
 
         return questionMapper.mapToQuestionDto(service.getQuestion(questionId).orElseThrow(Exception::new));
 
@@ -46,7 +47,7 @@ public class QuestionController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/questions",consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/questions", consumes = APPLICATION_JSON_VALUE)
     public void createQuestion(@RequestBody QuestionDto questionDto) {
 
         service.saveQuestion(questionMapper.mapToQuestion(questionDto));

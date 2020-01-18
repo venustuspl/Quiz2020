@@ -19,7 +19,7 @@ public interface AnswerRepository extends CrudRepository<Answer, Long> {
     public Optional<Answer> findById(Long id);
 
     @Override
-    Answer save (Answer answer);
+    Answer save(Answer answer);
 
     @Override
     public void deleteById(Long id);
