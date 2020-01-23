@@ -37,6 +37,10 @@ dependencies {
 	//mail
 	compile('org.springframework.boot:spring-boot-starter-mail:1.5.7.RELEASE')
 
+	//modelmapper
+	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.0'
+
+
 }
 
 test {
