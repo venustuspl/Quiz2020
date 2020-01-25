@@ -11,4 +11,12 @@ public class QuestionDto {
 
     private long id;
     private String question;
+
+    @Override
+    public String toString() {
+        return "QuestionDto{" +
+                "id=" + id +
+                ", question='" + question + '\'' +
+                '}';
+    }
 }

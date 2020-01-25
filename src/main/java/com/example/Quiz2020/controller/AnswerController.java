@@ -3,13 +3,22 @@ package com.example.Quiz2020.controller;
 
 import com.example.Quiz2020.domain.Answer;
 import com.example.Quiz2020.domain.AnswerDto;
+import com.example.Quiz2020.domain.Question;
+import com.example.Quiz2020.domain.QuestionDto;
 import com.example.Quiz2020.mapper.AnswerMapper;
 import com.example.Quiz2020.service.DbService;
+import com.google.gson.Gson;
+import com.sun.xml.bind.v2.util.CollisionCheckStack;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -27,6 +36,37 @@ public class AnswerController {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @RequestMapping(method = RequestMethod.GET, value = "/quiz")
+    public String getQuiz() {
+
+//        List<AnswerDto> answerDtos = service.getAllAnswers().stream()
+//                .map(a -> modelMapper.map(a, AnswerDto.class))
+//                .collect(Collectors.toList());
+//
+//        Map<Long, List<AnswerDto>> answerDtoMap = answerDtos.stream()
+//                .collect(Collectors.groupingBy(AnswerDto::getQuestionId));
+
+        List<QuestionDto> questionDtoList = service.getAllQuestions().stream()
+                .map(q -> modelMapper.map(q, QuestionDto.class))
+                .collect(Collectors.toList());
+
+        Map<QuestionDto, List<AnswerDto>> quizMap = new HashMap<>();
+
+        for (QuestionDto questionDto : questionDtoList) {
+            quizMap.put(questionDto, new ArrayList<>(service.getAllAnswers().stream()
+                    .map(a -> modelMapper.map(a, AnswerDto.class))
+                    .filter(a -> a.getQuestionId() == questionDto.getId())
+                    .collect(Collectors.toList())));
+        }
+
+        Gson gson = new Gson();
+        String result = gson.toJson(quizMap);
+
+
+        return result;
+    }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/answers")
     public List<AnswerDto> getAnswers() {

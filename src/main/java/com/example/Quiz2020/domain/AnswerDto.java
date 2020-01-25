@@ -15,5 +15,13 @@ public class AnswerDto {
     private String answerInfo;
     private Boolean isCorrect;
 
-
+    @Override
+    public String toString() {
+        return "AnswerDto{" +
+                "answerId=" + answerId +
+                ", questionId=" + questionId +
+                ", answerInfo='" + answerInfo + '\'' +
+                ", isCorrect=" + isCorrect +
+                '}';
+    }
 }

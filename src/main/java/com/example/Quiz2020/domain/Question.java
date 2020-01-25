@@ -25,6 +25,8 @@ public class Question {
         this.question = question;
     }
 
+    public Question() {
+    }
 
     public long getId() {
         return id;
