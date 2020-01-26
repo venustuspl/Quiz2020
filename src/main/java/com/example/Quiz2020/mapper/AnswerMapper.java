@@ -51,11 +51,11 @@ public class AnswerMapper {
                 .collect(Collectors.toList());
     }
 
-    public String selectGoodAnswer(int id) {
+    public List<String> selectGoodAnswer(int id) {
         return dbSerwis.getAllQuestionAnswers(id).stream()
                 .filter(a -> a.getCorrect() == true)
                 .map(a -> a.getAnswerInfo())
-                .toString();
+                .collect(Collectors.toList());
     }
 
     public List<String> mapToAnswerStringListByQuestionId(int id) {

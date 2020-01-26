@@ -7,13 +7,19 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class QuestionDto {
-
+    private final String name = "About evrything";
     private long id;
     private String content;
     private List<String> options;
-    private String answer;
+    private List<String> answer;
 
+    public QuestionDto(long id, String content, List<String> options, List<String> answer) {
+        this.id = id;
+        this.content = content;
+        this.options = options;
+        this.answer = answer;
+    }
 }
