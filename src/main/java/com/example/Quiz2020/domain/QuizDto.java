@@ -12,16 +12,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class QuizDto {
-    //private final String name = "About everything";
+    private final String name = "About everything";
     private List<QuestionDto> questions;
-    private List<String> options;
-    private String answer;
 
-    public QuizDto(List<QuestionDto> questions, List<String> options, String answer) {
+    public QuizDto(List<QuestionDto> questions) {
         this.questions = questions;
-        this.options = options;
-        this.answer = answer;
     }
-
 
 }

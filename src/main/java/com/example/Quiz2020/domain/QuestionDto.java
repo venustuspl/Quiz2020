@@ -10,7 +10,7 @@ import java.util.List;
 
 @NoArgsConstructor
 public class QuestionDto {
-    private final String name = "About evrything";
+
     private long id;
     private String content;
     private List<String> options;

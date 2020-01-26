@@ -21,17 +21,11 @@ import java.util.stream.Collectors;
 public class QuizController {
 
     @Autowired
-    QuestionMapper questionMapper;
-
-    @Autowired
-    DbService service;
+    QuizMapper quizMapper;
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/quiz")
-    public List<QuestionDto> getQuiz() {
-        List<QuestionDto> quizDtoList = questionMapper.mapToQuestionDto(service.getAllQuestions());
-
-        return quizDtoList;
-
+    public QuizDto getQuiz() {
+        return quizMapper.mapToQuizDto();
     }
 }

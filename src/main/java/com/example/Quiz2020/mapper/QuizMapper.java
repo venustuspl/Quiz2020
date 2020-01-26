@@ -6,6 +6,7 @@ import com.example.Quiz2020.domain.QuestionDto;
 import com.example.Quiz2020.domain.QuizDto;
 import com.example.Quiz2020.repository.AnswerRepository;
 import com.example.Quiz2020.repository.QuestionRepository;
+import com.example.Quiz2020.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,17 +19,11 @@ public class QuizMapper {
     QuestionMapper questionMapper;
 
     @Autowired
-    QuestionRepository questionRepository;
+    DbService service;
 
-    @Autowired
-    AnswerRepository answerRepository;
+    public QuizDto mapToQuizDto() {
 
-    @Autowired
-    AnswerMapper answerMapper;
-
-    public QuestionDto mapToQuizDto(){
-
-        return new QuestionDto();
+        return new QuizDto(questionMapper.mapToQuestionDto(service.getAllQuestions()));
 
     }
 }
