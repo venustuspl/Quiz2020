@@ -35,5 +35,18 @@ public class AnswerMapper {
                 .map(q -> new AnswerDto(q.getAnswerId(), q.getQuestionId(), q.getAnswerInfo(), q.getCorrect()))
                 .collect(Collectors.toList());
     }
+
+    public List<String> mapToAnswerStringList(final List<Answer> answersList) {
+        return answersList.stream()
+                .map(a ->  a.getAnswerInfo())
+                .collect(Collectors.toList());
+    }
+
+    public String selectGoodAnswer(final List<Answer> answersList) {
+        return answersList.stream()
+                .filter(a -> a.getCorrect() == true)
+                .map(a ->  a.getAnswerInfo())
+                .toString();
+    }
 }
 

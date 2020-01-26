@@ -14,7 +14,7 @@ public class QuestionMapper {
     public Question mapToQuestion(final QuestionDto questionDto) {
         return new Question(
                 questionDto.getId(),
-                questionDto.getQuestion());
+                questionDto.getContent());
 
     }
 
@@ -32,5 +32,12 @@ public class QuestionMapper {
                 .map(q -> new QuestionDto(q.getId(), q.getQuestion()))
                 .collect(Collectors.toList());
     }
+
+    public List<String> mapToQuestionStringList(final List<Question> questionList) {
+        return questionList.stream()
+                .map(q ->  q.getQuestion())
+                .collect(Collectors.toList());
+    }
+
 }
 

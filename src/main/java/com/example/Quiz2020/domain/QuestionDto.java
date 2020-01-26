@@ -10,13 +10,13 @@ import lombok.*;
 public class QuestionDto {
 
     private long id;
-    private String question;
+    private String content;
 
     @Override
     public String toString() {
         return "QuestionDto{" +
                 "id=" + id +
-                ", question='" + question + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 }
