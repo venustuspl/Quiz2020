@@ -1,7 +1,9 @@
 package com.example.Quiz2020.controller;
 
 import com.example.Quiz2020.domain.AnswerDto;
+import com.example.Quiz2020.domain.QuestionDto;
 import com.example.Quiz2020.domain.QuizDto;
+import com.example.Quiz2020.mapper.QuestionMapper;
 import com.example.Quiz2020.mapper.QuizMapper;
 import com.example.Quiz2020.service.DbService;
 import org.modelmapper.ModelMapper;
@@ -19,12 +21,15 @@ import java.util.stream.Collectors;
 public class QuizController {
 
     @Autowired
-    private QuizMapper quizMapper;
+    QuestionMapper questionMapper;
+
+    @Autowired
+    DbService service;
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/quiz")
-    public QuizDto getQuiz() {
-        QuizDto quizDtoList = quizMapper.mapToQuizDto();
+    public List<QuestionDto> getQuiz() {
+        List<QuestionDto> quizDtoList = questionMapper.mapToQuestionDto(service.getAllQuestions());
 
         return quizDtoList;
 

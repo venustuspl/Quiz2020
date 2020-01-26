@@ -2,6 +2,7 @@ package com.example.Quiz2020.mapper;
 
 import com.example.Quiz2020.domain.Answer;
 import com.example.Quiz2020.domain.Question;
+import com.example.Quiz2020.domain.QuestionDto;
 import com.example.Quiz2020.domain.QuizDto;
 import com.example.Quiz2020.repository.AnswerRepository;
 import com.example.Quiz2020.repository.QuestionRepository;
@@ -25,12 +26,9 @@ public class QuizMapper {
     @Autowired
     AnswerMapper answerMapper;
 
-    public QuizDto mapToQuizDto(){
+    public QuestionDto mapToQuizDto(){
 
-        return new QuizDto(questionMapper.mapToQuestionDtoList(questionRepository.findAll()),
-                answerMapper.mapToAnswerStringList(answerRepository.findAll()),
-                answerMapper.selectGoodAnswer(answerRepository.findAll()));
-
+        return new QuestionDto();
 
     }
 }
